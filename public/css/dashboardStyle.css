@@ -1,0 +1,431 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Questrial&display=swap');
+
+/*--------------------------------------SIDE BAR-------------------------------------- */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: var(--font-color);
+    letter-spacing: 1px;
+    text-decoration: none;
+    list-style: none;
+}
+
+:root{
+
+    --primary-color: #29387C;
+    --secondary-color: #4B60BD;
+    --accent-color: #FEF200;
+    --base-color: #002768;
+    --background-color: rgba(0, 4, 255, 0.040);
+    --shadow: 0px 2px 10px -2px rgba(0, 4, 255, 0.070);
+    --shadow2: 0px 15px 20px 0px rgba(0, 4, 255, 0.070);
+    --active-background: rgba(208, 209, 229, 25%);
+    --active: rgb(0, 81, 255);
+
+    --font-size: 1rem;
+    --font-color: #333333;
+    --gap: 20px;
+
+    --radius: 2rem;
+    --border: 2px solid #e8e9ef;
+
+    --transition: 0.3s ease;
+}
+
+p{
+    font-size: var(--font-size);
+    color: var(--font-color)S;
+}
+
+.material-symbols-rounded{
+    color: var(--font-color);
+}
+
+body{
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--gap);
+    width: 100%;
+    height: 100vh;
+    background: var(--background-color);
+}
+
+/* Navigational Bar */
+
+.sidebar{
+    background: white;
+    width: 330px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 65px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: var(--shadow2);
+    /* justify-content: space-between; */
+}
+
+/* Logo */
+.sidebar .logo{
+    width: 275px;
+    
+}
+
+/* User Profile*/
+.sidebar .user{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.sidebar .user .profile-pic{
+    width: 130px;
+    border-radius: 100px;
+    padding: 3px;
+    border: 5px solid var(--active)
+}
+
+.sidebar .user h2{
+    font-weight: 600;
+    color: var(--font-color);
+    font-family: 25px;
+}
+
+/* Controls */
+
+/* .material-symbols-rounded {
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+} */
+
+.sidebar .controls{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+
+}
+
+.controls a{
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    font-weight: 400;
+    gap: 15px;
+    padding: 15px 0 15px 38px;
+    border-left: 8px solid rgba(0, 0, 255, 0);
+    border-radius: 5px;
+    transition: var(--transition);
+}
+
+.controls span{
+    font-size: 33px;
+    /* color: #6a6a6a; */
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.controls #count{
+    position: absolute;
+    right: 13px;
+    /* top: 5px; */
+    background-color: rgb(255, 0, 119);
+    /* border: 2px solid white; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    padding: 0 3px;
+    width: 35px;
+    height: 25px;
+    text-align: center;
+    border-radius: 10px;
+    letter-spacing: 0;
+    /* box-shadow:  0px 3px 5px 2px rgba(1, 2, 59, 0.097); */
+}
+
+/* Active */
+.controls .active{
+    color: var(--active);
+    font-weight: 600;
+    background-color: var(--active-background);
+    border-left: 8px solid var(--active);
+    transition: var(--transition);
+}
+
+.controls .active-icon{
+    color: var(--active);
+    transition: var(--transition);
+
+}
+
+.controls a:hover :where(p, span){
+    color: rgb(56, 13, 210);
+
+}
+
+
+
+
+
+/* Main Content */
+.container{
+    background: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: var(--shadow2);
+}
+
+/* Head */
+.head{
+    display: flex;
+    padding: 0 15px;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+}
+.head h1{
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 50px;
+}
+.head .head-control{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    height: max-content;
+}
+.head-control .search{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.head-control .search input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 40px 5px 15px;
+    outline: none;
+    border: none;
+    background-color: white;
+    border: var(--border);
+    border-radius: 100px;
+    height: 50px;
+    width: 110px;
+    transition: var(--transition);
+}
+.head-control .search span{
+    position: absolute;
+    right: 10px;
+}
+.head-control .search input:focus{
+    width: 100%;
+    border: 2px solid var(--secondary-color);
+    box-shadow: var(--shadow2);
+}
+
+
+.head-control button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 20px;
+    outline: none;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 100px;
+    gap: 8px;
+    height: 50px;
+    width: auto;
+    transition: var(--transition);
+}
+
+.head-control button span{
+    color: white;
+}
+
+
+button:hover{
+    transform: scale(1.05);
+}
+
+/* ----------------------- Cooperative ----------------------- */
+
+.content{
+    position: relative;
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+    gap: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+/* Cooperative Container */
+.content .coop-con{
+    position: relative;
+    flex: 1 0 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 400px;
+    min-height: 300px;
+    height: auto;
+    background-color: white;
+    border-radius: 15px;
+    border: var(--border);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.content .coop-con:hover{
+    scale: 1.02;
+}
+
+.coop-con .color{
+    display: flex;
+    justify-content: end;
+    padding: 15px 5px;
+    width: 100%;
+    height: 40%;
+    background-color: var(--primary-color);
+}
+
+.color span{
+    font-size: 45px;
+    font-weight: 900;
+    color: white;
+}
+
+.coop-con .coop-profile{
+    position: absolute;
+    top: 23.3%;
+    width: 120px;
+    border-radius: 150px;
+    box-shadow: var(--shadow2);
+}
+
+.coop-con .coop-details{
+    position: relative;
+    top: 24.5%;
+    text-align: center;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+}
+
+.coop-con .coop-details h2{
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.coop-con .coop-details h3{
+    font-weight: 400;
+    font-size: 20px;
+}
+
+
+/* ----------------------- Notifications ----------------------- */
+.notification{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    gap: 10px;
+    /* background-color: var(--active-background); */
+}
+
+#filter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 20px;
+    outline: none;
+    border: none;
+    background-color: rgb(222, 222, 239);
+    color: var(--font-color);
+    border-radius: 100px;
+    gap: 8px;
+    height: 50px;
+    width: auto;
+    transition: var(--transition);
+    
+}
+
+#filter span{
+    color: var(--font-color);
+}
+
+.notification .notif{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: fit-content;
+    gap: 20px;
+    background-color: var(--active-background);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.notification .notif .notif-details{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    
+}
+.notification .notif .notif-details h3{
+    font-size: 25px;
+    font-weight: 600;
+}
+.notification .notif .notif-details #time{
+    font-size: 15px;
+    color: gray;
+}
+
+
+.notification .notif #close{
+    outline: none;
+    border: none;
+    width: auto;
+    height: auto;
+    background-color: none;
+    align-self: flex-start;
+    cursor: pointer;
+}
