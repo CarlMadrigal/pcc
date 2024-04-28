@@ -19,7 +19,7 @@
             @csrf
             <div class="mainLogo">
                 <img src="images/logo.png" class="logo" width="300px">
-                <h1>Login</h1>
+                <h1>Log in</h1>
             </div>
             
             <div class="input-box">
@@ -41,7 +41,7 @@
                 <a href="#">Forgot password?</a>
             </div>
             <button type="submit" class="btn">
-                Login
+                Log in
             </button>
         </form>
     </div>

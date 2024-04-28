@@ -34,7 +34,8 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            flash()->addInfo('Welcome back!');
+            $user = Auth::user();
+            flash()->addInfo('Welcome back '.$user->name. '!');
             return redirect()->intended('/');
         }
 

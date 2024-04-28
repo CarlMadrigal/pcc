@@ -18,10 +18,10 @@
     --secondary-color: #4B60BD;
     --accent-color: #FEF200;
     --base-color: #002768;
-    --background-color: rgba(0, 4, 255, 0.040);
+    --background-color: rgba(134, 144, 233, 0.15);
     --shadow: 0px 2px 10px -2px rgba(0, 4, 255, 0.070);
-    --shadow2: 0px 15px 20px 0px rgba(0, 4, 255, 0.070);
-    --active-background: rgba(208, 209, 229, 25%);
+    --shadow2: 0px 10px 15px -3px rgba(0, 4, 255, 0.070);
+    --active-background: rgba(134, 144, 233, 0.10);
     --active: rgb(0, 81, 255);
 
     --font-size: 1rem;
@@ -29,7 +29,7 @@
     --gap: 20px;
 
     --radius: 2rem;
-    --border: 2px solid #e8e9ef;
+    --border: 2px solid rgba(134, 144, 233, 0.25);
 
     --transition: 0.3s ease;
 }
@@ -63,7 +63,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 65px;
+    gap: 50px;
     padding: 20px;
     border-radius: 20px;
     box-shadow: var(--shadow2);
@@ -118,6 +118,7 @@ body{
 }
 
 .controls a{
+    color: rgb(68, 68, 68);
     position: relative;
     width: 100%;
     height: fit-content;
@@ -125,15 +126,21 @@ body{
     align-items: center;
     justify-content: start;
     font-weight: 400;
-    gap: 15px;
+    gap: 20px;
     padding: 15px 0 15px 38px;
-    border-left: 8px solid rgba(0, 0, 255, 0);
+    border-left: 6px solid rgba(0, 0, 255, 0);
     border-radius: 5px;
     transition: var(--transition);
 }
+.controls a p{
+    font-size: 15px;
+}
+
+
 
 .controls span{
-    font-size: 33px;
+    font-size: 25px;
+    color: rgb(68, 68, 68);
     /* color: #6a6a6a; */
     font-weight: 500;
     transition: var(--transition);
@@ -141,7 +148,7 @@ body{
 
 .controls #count{
     position: absolute;
-    right: 13px;
+    right: 20px;
     /* top: 5px; */
     background-color: rgb(255, 0, 119);
     /* border: 2px solid white; */
@@ -152,11 +159,11 @@ body{
     font-size: 12px;
     font-weight: 600;
     color: white;
-    padding: 0 3px;
+    padding: 0 2px;
     width: 35px;
-    height: 25px;
+    height: 20px;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 8px;
     letter-spacing: 0;
     /* box-shadow:  0px 3px 5px 2px rgba(1, 2, 59, 0.097); */
 }
@@ -166,7 +173,7 @@ body{
     color: var(--active);
     font-weight: 600;
     background-color: var(--active-background);
-    border-left: 8px solid var(--active);
+    border-left: 6px solid var(--active);
     transition: var(--transition);
 }
 
@@ -177,10 +184,9 @@ body{
 }
 
 .controls a:hover :where(p, span){
-    color: rgb(56, 13, 210);
+    color: var(--active);
 
 }
-
 
 
 
@@ -194,7 +200,7 @@ body{
     flex-direction: column;
     align-items: center;
     gap: 30px;
-    padding: 20px;
+    padding: 5px 20px 20px;
     border-radius: 20px;
     box-shadow: var(--shadow2);
 }
@@ -251,7 +257,7 @@ body{
 }
 
 
-.head-control button{
+.head-control a{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -267,13 +273,13 @@ body{
     transition: var(--transition);
 }
 
-.head-control button span{
+.head-control a span{
     color: white;
 }
 
 
 button:hover{
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 /* ----------------------- Cooperative ----------------------- */
@@ -356,6 +362,83 @@ button:hover{
 .coop-con .coop-details h3{
     font-weight: 400;
     font-size: 20px;
+}
+
+/* ----------------------- Add Coop ----------------------- */
+
+.content .add-coop-form{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+}
+.content .add-coop-form form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    width: 100%;
+    height: fit-content;
+}
+.content .add-coop-form form h1{
+    font-size: 40px;
+    font-weight: 600;
+}
+.add-coop-form form > div{
+    background-color: white;
+    /* border-radius: 15px;
+    padding: 20px; */
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+}
+
+.content .add-coop-form img{
+    width: 780px;
+    height: auto;
+    mix-blend-mode: darken;
+}
+
+.add-coop-form form > div input{
+    width: 100%;
+    outline: none;
+    border: var(--border);
+    padding: 9px 15px;
+    font-size: 15px;
+    border-radius: 10px;
+    transition: .3s ease;
+}
+.add-coop-form form .basic-info-coop > div{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.add-coop-form form > div h3{
+    font-size: 20px;
+    font-weight: 500;
+}
+.add-coop-form form > div input:hover{
+    border: 2px solid var(--secondary-color);
+}
+.add-coop-form form > div input:focus{
+    width: 100%;
+    border: 2px solid var(--secondary-color);
+    box-shadow: var(--shadow2)
+}
+.add-coop-form form > button{
+    background-color: #002768;
+    outline: none;
+    border: none;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    height: auto;
+    font-size: 15px;
+    border-radius: 10px;
+    transition: .3s ease;
 }
 
 

@@ -20,4 +20,10 @@ Route::get('/', [RedirectController::class, 'redirectToHomepage']);
 Route::post('/login', [LoginController::class, 'login']);
 
 Route::get('/logout', [LoginController::class, 'logout']);
+
+Route::get('/cooperative', [RedirectController::class, 'cooperative']);
+
+Route::get('/add-coop', [RedirectController::class, 'addCoop']);
+
+// Route::get('/test', [RedirectController::class, 'test']);
     
