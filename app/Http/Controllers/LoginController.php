@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -33,8 +32,12 @@ class LoginController extends Controller
         ];
 
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
             $user = Auth::user();
+            if ($user->role != 'admin') {
+                flash()->addError('Invalid credentials');
+                return back()->withInput();
+            }
+            $request->session()->regenerate();
             flash()->addInfo('Welcome back '.$user->name. '!');
             return redirect()->intended('/');
         }

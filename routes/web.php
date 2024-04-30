@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RedirectController;
+use App\Http\Controllers\CooperativeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RedirectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +22,14 @@ Route::post('/login', [LoginController::class, 'login']);
 
 Route::get('/logout', [LoginController::class, 'logout']);
 
-Route::get('/cooperative', [RedirectController::class, 'cooperative']);
+Route::get('/cooperative', [RedirectController::class, 'redirectToCooperativePage']);
 
-Route::get('/add-coop', [RedirectController::class, 'addCoop']);
+Route::get('/cooperative/{id}', [RedirectController::class, 'redirectToCooperativeDetailsPage']);
 
+Route::get('/register/cooperative', [RedirectController::class, 'redirectToRegisterCoop']);
+
+Route::post('/register/cooperative/process', [CooperativeController::class, 'register']);
+
+Route::get('/createCarabao', [RedirectController::class, 'createCarabao']);
 // Route::get('/test', [RedirectController::class, 'test']);
     

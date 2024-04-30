@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="css/designStyle.css">
+    <link rel="stylesheet" href="{{ asset('css/designStyle.css') }}">
     <link rel="icon" type="image/x-icon" href="images/favicon.png">
     <title>Cooperative - PCC</title>
 </head>
@@ -13,12 +13,12 @@
     <div class="sidebar">
         <!-- Logo -->
         <a href="/">
-            <img src="images/combination logo.png" class="logo">
+            <img src="{{ asset('images/combination logo.png') }}" class="logo">
         </a>
 
         <!-- User Profile -->
         <div class="user">
-            <img class="profile-pic" src="images/profile.jpg" alt="">
+            <img class="profile-pic" src="{{ asset('images/profile.jpg') }}" alt="">
             <h2 id="name">Dave Geroleo</h2>
         </div>
 
@@ -45,24 +45,39 @@
                     <input type="text" placeholder="Search">
                     <span class="material-symbols-rounded">search</span>
                 </div>
-                <a href="/register/cooperative"><p>Add Coop</p><span class="material-symbols-rounded">add</span></a>
+                <a href="#"><p>Add Coop</p><span class="material-symbols-rounded">add</span></a>
             </div>
         </div>
 
         <!-- Content -->
         <div class="content">
-            @foreach ($cooperatives as $cooperative)
-                <a href="/cooperative/{{$cooperative->id}}" class="coop-con">
-                    <div class="color">
-                        <span class="material-symbols-rounded">more_vert</span>
+            
+            <div class="coop-full-details">
+                <div class="coop-head">
+                    <div class="coop-prof">
+                        <img src="images/Coop profile/boac.png" alt="" width="120px">
+                        <div class="coop-name-owner">
+                            <h1 id="coop-name">{{$cooperative->name}}</h1>
+                            <p>{{$cooperative->head->name}}</p>
+                            <small id="coop-id">#sd349v30</small>
+                        </div>
                     </div>
-                    <img class="coop-profile" src="images/Coop profile/boac.png">
-                    <div class="coop-details">
-                        <h2>{{$cooperative->name}}</h2>
-                        <h3>{{$cooperative->address}}</h3>
+                    
+                    <div class="coop-adds">
+                        <label for="file-upload" class="custom-file-upload">
+                            <span class="material-symbols-rounded">upload</span><p>Materials</p>
+                        </label>
+                        <input id="file-upload" type="file" />
+                        
+                        <button><a href="/createCarabao"><span class="material-symbols-rounded">add</span><p>Carabao</p></a></button>
+                        <button><a href="#"><span class="material-symbols-rounded">edit</span><p>Edit</p></a></button>
                     </div>
-                </a>   
-            @endforeach
+                </div>
+                <div class="coop-body">
+
+                </div>
+            </div>
+            
         </div>
     </div>
 

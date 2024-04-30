@@ -22,6 +22,7 @@ class User extends Authenticatable
         'email',
         'username',
         'password',
+        'role'
     ];
 
     /**
@@ -43,4 +44,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function head() {
+        return $this->belongsTo(Cooperative::class);
+    }
 }
