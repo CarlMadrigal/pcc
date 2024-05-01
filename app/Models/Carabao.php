@@ -5,25 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cooperative extends Model
+class Carabao extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'name',
         'user_id',
-        'address',
-        'contact'
+        'cooperative_id',
+        'breed',
+        'weight',
     ];
 
-    public function head() {
+    public function user() {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function users() {
-        return $this->hasMany(User::class);
-    }
-
-    public function carabaos() {
-        return $this->hasMany(Carabao::class);
+    public function cooperative() {
+        return $this->belongsTo(Cooperative::class, 'cooperative_id', 'id');
     }
 }

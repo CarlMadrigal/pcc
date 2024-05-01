@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CarabaoController;
 use App\Http\Controllers\CooperativeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RedirectController;
@@ -30,6 +31,10 @@ Route::get('/register/cooperative', [RedirectController::class, 'redirectToRegis
 
 Route::post('/register/cooperative/process', [CooperativeController::class, 'register']);
 
-Route::get('/createCarabao', [RedirectController::class, 'createCarabao']);
+Route::get('/cooperative/{id}/register/carabao', [RedirectController::class, 'redirectToRegisterCarabaoPage']);
+
+Route::post('/register/carabao/process', [CarabaoController::class, 'register']);
+
+Route::get('/notification', [RedirectController::class, 'redirectToNotification']);
 // Route::get('/test', [RedirectController::class, 'test']);
     

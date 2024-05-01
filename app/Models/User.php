@@ -45,7 +45,11 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function head() {
+    public function cooperative() {
         return $this->belongsTo(Cooperative::class);
+    }
+
+    public function carabaos() {
+        return $this->hasMany(Carabao::class);
     }
 }

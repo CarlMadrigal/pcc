@@ -142,7 +142,7 @@ body{
     font-size: 25px;
     color: rgb(68, 68, 68);
     /* color: #6a6a6a; */
-    font-weight: 500;
+    font-weight: 400;
     transition: var(--transition);
 }
 
@@ -304,8 +304,8 @@ button:hover{
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 400px;
-    min-height: 300px;
+    max-width: 455px;
+    max-height: 375px;
     height: auto;
     background-color: white;
     border-radius: 15px;
@@ -495,6 +495,80 @@ button:hover{
     color: aqua;
     font-size: 15px;
 }
+
+/* Coop-body */
+
+.coop-full-details .coop-body{
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.coop-body .coop-contacts{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.coop-body .coop-contacts > p{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.coop-full-details .coop-body .coop-summary{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 30px;
+    flex-wrap: nowrap;
+}
+.coop-full-details .coop-body h1{
+    font-weight: 600;
+}
+
+.coop-body .coop-summary > div{
+    background-color: var(--active-background);
+    flex: 1 0 200px;
+    max-height: 400px;
+    padding: 40px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.coop-body .coop-summary div > img{
+    height: 80px;
+    width: fit-content;
+}
+
+.coop-body .coop-summary div > h2{
+    font-size: 40px;
+    font-weight: 600;
+}
+.coop-body .coop-summary div p{
+    font-size: 20px;
+}
+.coop-body .coop-summary div p > .highlight{
+    color: var(--primary-color);
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.coop-body .coop-summary div h2 small{
+    font-size: 25px;
+    font-weight: 400;
+}
+
+
+
+
+
+
 
 
 /* ----------------------- Coop Adds ----------------------- */

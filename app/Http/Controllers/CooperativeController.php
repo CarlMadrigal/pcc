@@ -15,7 +15,8 @@ class CooperativeController extends Controller
             'head' => 'required',
             'address' => 'required',
             'contact' => 'required',
-            'username' => 'required|min:5',
+            'email' => 'required|unique:users',
+            'username' => 'required|min:5|unique:users',
             'password' => 'required|min:8',
             'confirmPassword' => 'required|same:password'
         ], [
@@ -23,8 +24,11 @@ class CooperativeController extends Controller
             'head.required' => 'Cooperative head is required',
             'address.required' => 'Cooperative address is required',
             'contact.required' => 'Cooperative contact number is required',
+            'email.required' => 'Email is required',
+            'email.unique' => 'Email address already used',
             'username.required' => 'Username is required',
             'username.min' => 'At least 5 characters is required for username',
+            'username.unique' => 'Username already exist',
             'password.required' => 'Password is required',
             'password.min' => 'Password should be at least 8 character',
             'confirmPassword' => 'Password doesn\'t match'

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="{{ asset('css/designStyle.css') }}">
-    <link rel="icon" type="image/x-icon" href="images/favicon.png">
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}">
     <title>Cooperative - PCC</title>
 </head>
 <body>
@@ -27,7 +27,7 @@
             <a href="/"><span class="material-symbols-rounded">grid_view</span><p>Dashboard</p></a>
             <a href="/cooperative" class="active"><span class="material-symbols-rounded active-icon">handshake</span><p>Cooperative</p></a>
             <a href="#"><span class="material-symbols-rounded">pie_chart</span><p>Analytics</p><p id="count">5</p></a>
-            <a href="#"><span class="material-symbols-rounded">notifications</span><p>Notifications</p><p id="count">50</p></a>
+            <a href="/notification"><span class="material-symbols-rounded">notifications</span><p>Notifications</p><p id="count">50</p></a>
             <a href="#"><span class="material-symbols-rounded">chat</span><p>Messages</p><p id="count">10</p></a>
             <a href="#"><span class="material-symbols-rounded">settings</span><p>Settings</p></a>
             <a href="/logout"><span class="material-symbols-rounded">logout</span><p>Log out</p></a>
@@ -45,7 +45,7 @@
                     <input type="text" placeholder="Search">
                     <span class="material-symbols-rounded">search</span>
                 </div>
-                <a href="#"><p>Add Coop</p><span class="material-symbols-rounded">add</span></a>
+                <a href="/register/cooperative"><p>Add Coop</p><span class="material-symbols-rounded">add</span></a>
             </div>
         </div>
 
@@ -55,11 +55,11 @@
             <div class="coop-full-details">
                 <div class="coop-head">
                     <div class="coop-prof">
-                        <img src="images/Coop profile/boac.png" alt="" width="120px">
+                        <img src="{{ asset('images/default_coop_profile.png') }}" alt="" width="120px">
                         <div class="coop-name-owner">
                             <h1 id="coop-name">{{$cooperative->name}}</h1>
                             <p>{{$cooperative->head->name}}</p>
-                            <small id="coop-id">#sd349v30</small>
+                            <small id="coop-id">#{{$cooperative->id}}</small>
                         </div>
                     </div>
                     
@@ -69,12 +69,36 @@
                         </label>
                         <input id="file-upload" type="file" />
                         
-                        <button><a href="/createCarabao"><span class="material-symbols-rounded">add</span><p>Carabao</p></a></button>
+                        <button><a href="/cooperative/{{$cooperative->id}}/register/carabao"><span class="material-symbols-rounded">add</span><p>Carabao</p></a></button>
                         <button><a href="#"><span class="material-symbols-rounded">edit</span><p>Edit</p></a></button>
                     </div>
                 </div>
                 <div class="coop-body">
+                    <div class="coop-contacts">
+                        <p><span class="material-symbols-rounded">location_on</span><span>{{$cooperative->address}}</span></p>
+                        <p><span class="material-symbols-rounded">call</span><span>{{$cooperative->contact}}</span></p>
+                        <p><span class="material-symbols-rounded">mail</span><span>{{$cooperative->head->email}}</span></p>
+                    </div>
+                    <h1>Summary</h1>
+                    <div class="coop-summary">
+                        <div class="total-carabaos">
+                            <img src="{{ asset('images/cow.png') }}" alt="" width="">
+                            <p>Total Registered<br><span class="highlight">CARABAOS</span></p>
+                            <h2>{{count($cooperative->carabaos)}}</h2>
+                        </div>
 
+                        <div class="total-users">
+                            <img src="{{ asset('images/user.png') }}" alt="" width="">
+                            <p>Total Registered<br><span class="highlight">USERS</span></p>
+                            <h2>{{count($cooperative->users)}}</h2>
+                        </div>
+
+                        <div class="total-milk">
+                            <img src="{{ asset('images/milk.png') }}" alt="" width="">
+                            <p>Total Produced<br><span class="highlight">MILK</span></p>
+                            <h2>2232 <small>liter</small></h2> 
+                        </div>
+                    </div>
                 </div>
             </div>
             

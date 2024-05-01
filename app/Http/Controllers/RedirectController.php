@@ -27,7 +27,7 @@ class RedirectController extends Controller
     function redirectToRegisterCoop(Request $request) {
         return view('register_cooperative');
     }
-
+    
     function redirectToCooperativeDetailsPage(Request $request) {
         $id = request()->route('id');
         $cooperative = Cooperative::find($id);
@@ -40,9 +40,17 @@ class RedirectController extends Controller
         ]);
     }
 
-    function createCarabao(Request $request) {
-        return view('add-carabao');
+    function redirectToRegisterCarabaoPage(Request $request) {
+        $users = User::where('role', 'user')->get();
+        return view('register_carabao', [
+            'users' => $users
+        ]);
     }
+    
+    function redirectToNotification(Request $request) {
+        return view('notification');
+    }
+
     // public function test(Request $request){
     //     $users = User::where('username', 'robot_123');
     //     $users = User::all()->pluck('username');
