@@ -19,16 +19,15 @@
         <!-- User Profile -->
         <div class="user">
             <img class="profile-pic" src="{{ asset('images/profile.jpg') }}" alt="">
-            <h2 id="name">Dave Geroleo</h2>
+            <h2 id="name">{{auth()->user()->name}}</h2>
         </div>
 
         <!-- Controls -->
         <div class="controls">
             <a href="/"><span class="material-symbols-rounded">grid_view</span><p>Dashboard</p></a>
             <a href="/cooperative" class="active"><span class="material-symbols-rounded active-icon">handshake</span><p>Cooperative</p></a>
-            <a href="#"><span class="material-symbols-rounded">pie_chart</span><p>Analytics</p><p id="count">5</p></a>
-            <a href="/notification"><span class="material-symbols-rounded">notifications</span><p>Notifications</p><p id="count">50</p></a>
-            <a href="#"><span class="material-symbols-rounded">chat</span><p>Messages</p><p id="count">10</p></a>
+            <a href="#"><span class="material-symbols-rounded">pie_chart</span><p>Analytics</p></a>
+            <a href="/notification"><span class="material-symbols-rounded">notifications</span><p>Notifications</p></a>
             <a href="#"><span class="material-symbols-rounded">settings</span><p>Settings</p></a>
             <a href="/logout"><span class="material-symbols-rounded">logout</span><p>Log out</p></a>
         </div>
@@ -45,7 +44,7 @@
                     <input type="text" placeholder="Search">
                     <span class="material-symbols-rounded">search</span>
                 </div>
-                <!-- <a><p>Add Coop</p><span class="material-symbols-rounded">add</span></a> -->
+                <a href="/cooperative" id="backBtn"><span class="material-symbols-rounded">arrow_back</span></a>
             </div>
         </div>
 
@@ -57,16 +56,16 @@
                     <h1>Fill up the form</h1>
                     <div class="basic-info-coop">
                         <h3>Basic Info</h3>
-                        <input type="text" placeholder="Coop Name" name="name" required>
-                        <input type="text" placeholder="Coop Head" name="head" required>
-                        <input type="text" placeholder="Address" name="address" required>
-                        <input type="text" placeholder="Contact No." name="contact" required> 
+                        <input type="text" placeholder="Coop Name" name="name" value="{{ old('name') }}" required>
+                        <input type="text" placeholder="Coop Head" name="head" value="{{ old('head') }}" required>
+                        <input type="text" placeholder="Address" name="address" value="{{ old('address') }}" required>
+                        <input type="text" placeholder="Contact No." name="contact" value="{{ old('contact') }}" required> 
                     </div>
 
                     <div class="email-pass-coop">
                         <h3>Create Account</h3>
-                        <input type="text" placeholder="Email Address" name="email" required> 
-                        <input type="text" placeholder="Username" name="username" required> 
+                        <input type="email" placeholder="Email Address" name="email" value="{{ old('email') }}" required> 
+                        <input type="text" placeholder="Username" name="username" value="{{ old('username') }}" required> 
                         <input type="password" placeholder="Password" name="password" required>
                         <input type="password" placeholder="Confirm Password" name="confirmPassword" required>
                     </div>

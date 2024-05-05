@@ -19,16 +19,15 @@
         <!-- User Profile -->
         <div class="user">
             <img class="profile-pic" src="{{ asset('images/profile.jpg') }}" alt="">
-            <h2 id="name">Dave Geroleo</h2>
+            <h2 id="name">{{auth()->user()->name}}</h2>
         </div>
 
         <!-- Controls -->
         <div class="controls">
             <a href="/"><span class="material-symbols-rounded">grid_view</span><p>Dashboard</p></a>
             <a href="/cooperative"><span class="material-symbols-rounded">handshake</span><p>Cooperative</p></a>
-            <a href="#"><span class="material-symbols-rounded">pie_chart</span><p>Analytics</p><p id="count">5</p></a>
+            <a href="#"><span class="material-symbols-rounded">pie_chart</span><p>Analytics</p></a>
             <a href="/notification" class="active"><span class="material-symbols-rounded active-icon">notifications</span><p>Notifications</p></a>
-            <a href="#"><span class="material-symbols-rounded">chat</span><p>Messages</p><p id="count">10</p></a>
             <a href="#"><span class="material-symbols-rounded">settings</span><p>Settings</p></a>
             <a href="/logout"><span class="material-symbols-rounded">logout</span><p>Log out</p></a>
         </div>
@@ -45,48 +44,26 @@
                     <input type="text" placeholder="Search">
                     <span class="material-symbols-rounded">search</span>
                 </div>
-                <a href="" id="delete"><p>Delete All</p><span class="material-symbols-rounded">delete</span></a>
+                <a href="/deleteall" id="delete"><p>Delete All</p><span class="material-symbols-rounded">delete</span></a>
                 <a href="" id="filter"><p>Filter</p><span class="material-symbols-rounded">page_info</span></a>
+                <a href="" id="backBtn"><span class="material-symbols-rounded">arrow_back</span></a>
             </div>
         </div>
 
-        
+    
         <!-- Content -->
         <div class="notification">
-            
-
-            <div class="notif">
-                <img src="{{ asset('images/default_coop_profile.png') }}" alt="" width="110px">
-                <div class="notif-details">
-                    <h3 id="coop-name">Boac coop</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint consequatur itaque architecto perferendis natus illo et? Labore in reprehenderit numquam, aliquid molestias nesciunt facilis vitae culpa veritatis, delectus quis. Velit!</p>
-                    <p id="time">1 hour ago</p>
+            @foreach ($notifs as $notif)
+                <div class="notif">
+                    <img src="{{ asset('images/default_coop_profile.png') }}" alt="" width="110px">
+                    <div class="notif-details">
+                        <h3 id="title">{{$notif->title}}</h3>
+                        <p>{{$notif->message}}</p>
+                        <p id="time">{{ $notif->created_at->format('Y-m-d') }}</p>
+                    </div>
+                    <a href="/delete/{{$notif->id}}"><button type="button" id="close"><span class="material-symbols-rounded">close</span></button></a>
                 </div>
-                <button type="button" id="close"><span class="material-symbols-rounded">close</span></button>
-            </div>
-
-
-            <div class="notif">
-                <img src="{{ asset('images/default_coop_profile.png') }}" alt="" width="110px">
-                <div class="notif-details">
-                    <h3 id="coop-name">Boac coop</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint consequatur itaque architecto perferendis natus illo et? Labore in reprehenderit numquam, aliquid molestias nesciunt facilis vitae culpa veritatis, delectus quis. Velit!</p>
-                    <p id="time">1 hour ago</p>
-                </div>
-                <button type="button" id="close"><span class="material-symbols-rounded">close</span></button>
-            </div>
-
-
-            <div class="notif">
-                <img src="{{ asset('images/default_coop_profile.png') }}" alt="" width="110px">
-                <div class="notif-details">
-                    <h3 id="coop-name">Boac coop</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint consequatur itaque architecto perferendis natus illo et? Labore in reprehenderit numquam, aliquid molestias nesciunt facilis vitae culpa veritatis, delectus quis. Velit!</p>
-                    <p id="time">1 hour ago</p>
-                </div>
-                <button type="button" id="close"><span class="material-symbols-rounded">close</span></button>
-            </div>
-            
+            @endforeach
         </div>
 
     </div>

@@ -19,16 +19,15 @@
         <!-- User Profile -->
         <div class="user">
             <img class="profile-pic" src="{{ asset('images/profile.jpg') }}" alt="">
-            <h2 id="name">Dave Geroleo</h2>
+            <h2 id="name">{{auth()->user()->name}}</h2>
         </div>
 
         <!-- Controls -->
         <div class="controls">
             <a href="/"><span class="material-symbols-rounded">grid_view</span><p>Dashboard</p></a>
             <a href="/cooperative" class="active"><span class="material-symbols-rounded active-icon">handshake</span><p>Cooperative</p></a>
-            <a href="#"><span class="material-symbols-rounded">pie_chart</span><p>Analytics</p><p id="count">5</p></a>
-            <a href="/notification"><span class="material-symbols-rounded">notifications</span><p>Notifications</p><p id="count">50</p></a>
-            <a href="#"><span class="material-symbols-rounded">chat</span><p>Messages</p><p id="count">10</p></a>
+            <a href="#"><span class="material-symbols-rounded">pie_chart</span><p>Analytics</p></a>
+            <a href="/notification"><span class="material-symbols-rounded">notifications</span><p>Notifications</p></a>
             <a href="#"><span class="material-symbols-rounded">settings</span><p>Settings</p></a>
             <a href="/logout"><span class="material-symbols-rounded">logout</span><p>Log out</p></a>
         </div>
@@ -45,7 +44,7 @@
                     <input type="text" placeholder="Search">
                     <span class="material-symbols-rounded">search</span>
                 </div>
-                <a href="/register/cooperative"><p>Add Coop</p><span class="material-symbols-rounded">add</span></a>
+                <a href="/cooperative" id="backBtn"><span class="material-symbols-rounded">arrow_back</span></a>
             </div>
         </div>
 
@@ -90,7 +89,7 @@
                         <div class="total-users">
                             <img src="{{ asset('images/user.png') }}" alt="" width="">
                             <p>Total Registered<br><span class="highlight">USERS</span></p>
-                            <h2>{{count($cooperative->users)}}</h2>
+                            <h2>{{count($cooperative->users->where('role', 'user'))}}</h2>
                         </div>
 
                         <div class="total-milk">

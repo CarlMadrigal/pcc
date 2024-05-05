@@ -9,10 +9,10 @@ class Cooperative extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
         'user_id',
+        'name',
         'address',
-        'contact'
+        'contact',
     ];
 
     public function head() {
@@ -25,5 +25,9 @@ class Cooperative extends Model
 
     public function carabaos() {
         return $this->hasMany(Carabao::class);
+    }
+    
+    public function notifications() {
+        return $this->hasMany(Notification::class);
     }
 }

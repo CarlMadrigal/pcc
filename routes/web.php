@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CarabaoController;
-use App\Http\Controllers\CooperativeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CarabaoController;
 use App\Http\Controllers\RedirectController;
+use App\Http\Controllers\CooperativeController;
+use App\Http\Controllers\NotificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,9 @@ Route::get('/cooperative/{id}/register/carabao', [RedirectController::class, 're
 
 Route::post('/register/carabao/process', [CarabaoController::class, 'register']);
 
-Route::get('/notification', [RedirectController::class, 'redirectToNotification']);
-// Route::get('/test', [RedirectController::class, 'test']);
+Route::get('/notification', [RedirectController::class, 'redirectToNotificationpage']);
+
+Route::get('/delete/{id}', [NotificationController::class, 'delete']);
+
+Route::get('/deleteall', [NotificationController::class, 'deleteAll']);
     

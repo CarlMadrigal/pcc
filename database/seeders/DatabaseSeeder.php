@@ -15,16 +15,5 @@ class DatabaseSeeder extends Seeder
     {
         # For admin
         \App\Models\User::factory(1)->create();
-
-        # For normal user
-        \App\Models\User::factory()->create([
-            'name' => 'Carl Madrigal',
-            'email' => 'carlmadrigal@gmail.com',
-            'username' => 'carlmadrigal',
-            'email_verified_at' => now(),
-            'role' => 'user',
-            'password' => bcrypt('password123'),
-            'remember_token' => Str::random(10),
-        ]); 
     }
 }

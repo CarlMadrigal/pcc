@@ -20,16 +20,15 @@
         <!-- User Profile -->
         <div class="user">
             <img class="profile-pic" src="{{ asset('images/profile.jpg') }}" alt="">
-            <h2 id="name">Dave Geroleo</h2>
+            <h2 id="name">{{auth()->user()->name}}</h2>
         </div>
 
         <!-- Controls -->
         <div class="controls">
             <a href="/" class="active"><span class="material-symbols-rounded active-icon">grid_view</span><p>Dashboard</p></a>
             <a href="/cooperative"><span class="material-symbols-rounded ">handshake</span><p>Cooperative</p></a>
-            <a href="#"><span class="material-symbols-rounded">pie_chart</span><p>Analytics</p><p id="count">5</p></a>
-            <a href="/notification"><span class="material-symbols-rounded">notifications</span><p>Notifications</p><p id="count">50</p></a>
-            <a href="#"><span class="material-symbols-rounded">chat</span><p>Messages</p><p id="count">10</p></a>
+            <a href="#"><span class="material-symbols-rounded">pie_chart</span><p>Analytics</p></a>
+            <a href="/notification"><span class="material-symbols-rounded">notifications</span><p>Notifications</p></a>
             <a href="#"><span class="material-symbols-rounded">settings</span><p>Settings</p></a>
             <a href="/logout"><span class="material-symbols-rounded">logout</span><p>Log out</p></a>
         </div>
@@ -51,6 +50,63 @@
         </div>
 
         <!-- Content -->
+        <div class="analytics">
+            <div class="insights">
+                <div class="healthy">
+                    <div class="middle">
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="number">
+                                <p>80%</p>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <h3>Healthy</h3>
+                            <h2><span id="count-carabao">50</span> Carabaos</h2>
+                        </div>
+                    </div>
+                    <small class="text-muted">Last 24 hours</small>
+                </div>
+
+                <div class="unhealthy">
+                    <div class="middle">
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="number">
+                                <p>62%</p>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <h3>Healthy</h3>
+                            <h2><span id="count-carabao">12</span> Carabaos</h2>
+                        </div>
+                    </div>
+                    <small class="text-muted">Last 24 hours</small>
+                </div>
+
+                <div class="under-observation">
+                    <div class="middle">
+                        <div class="progress">
+                            <svg>
+                                <circle cx="38" cy="38" r="36"></circle>
+                            </svg>
+                            <div class="number">
+                                <p>44%</p>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <h3>Healthy</h3>
+                            <h2><span id="count-carabao">50</span> Carabaos</h2>
+                        </div>
+                    </div>
+                    <small class="text-muted">Last 24 hours</small>
+                </div>
+            </div>
+        </div>
         
     </div>
 

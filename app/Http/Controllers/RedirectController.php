@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Cooperative;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,8 +13,7 @@ class RedirectController extends Controller
     function redirectToHomepage(Request $request) {
         if(Auth::check()){
             return view('dashboard');
-        }
-        
+        }       
         return view('login');
     }
 
@@ -41,19 +41,16 @@ class RedirectController extends Controller
     }
 
     function redirectToRegisterCarabaoPage(Request $request) {
-        $users = User::where('role', 'user')->get();
+        $users = User::where('role', 'user')->where('cooperative_id', $request->id)->get();
         return view('register_carabao', [
             'users' => $users
         ]);
     }
     
-    function redirectToNotification(Request $request) {
-        return view('notification');
+    function redirectToNotificationpage(Request $request) {
+        $notif = Notification::orderBy('created_at', 'desc')->get();
+        return view('notification',[
+            'notifs' => $notif
+        ]);
     }
-
-    // public function test(Request $request){
-    //     $users = User::where('username', 'robot_123');
-    //     $users = User::all()->pluck('username');
-    //     dd($users);
-    // }
 }

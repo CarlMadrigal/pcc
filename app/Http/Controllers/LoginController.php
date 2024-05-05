@@ -11,18 +11,17 @@ class LoginController extends Controller
     public function login(Request $request){
         $validator = Validator::make($request->all(), [
             'username' => 'required|min:5',
-            'password' => 'required|min:8'
+            'password' => 'required|min:5'
         ], [
             'username.required' => 'Username is required',
-            'username.min' => 'At least 5 characters is required for username',
+            'username.min' => 'Username should be at least 5 character',
             'password.required' => 'Password is required',
-            'password.min' => 'Password should be at least 8 character'
+            'password.min' => 'Password should be at least 5 character'
         ]);
         
         if($validator->fails()){
-            foreach($validator->messages()->all() as $message){
-                flash()->addError($message);
-            }
+            $message = $validator->messages()->all()[0];
+            flash()->addError($message);
             return back()->withInput();
         }
 
@@ -37,7 +36,6 @@ class LoginController extends Controller
                 flash()->addError('Invalid credentials');
                 return back()->withInput();
             }
-            $request->session()->regenerate();
             flash()->addInfo('Welcome back '.$user->name. '!');
             return redirect()->intended('/');
         }
@@ -48,8 +46,6 @@ class LoginController extends Controller
 
     public function logout(Request $request){
         Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
         return redirect('/');
     }
 }

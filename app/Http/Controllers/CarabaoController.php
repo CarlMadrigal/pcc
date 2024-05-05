@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carabao;
+use App\Models\Cooperative;
+use App\Models\Notification;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 
 class CarabaoController extends Controller
@@ -28,20 +30,27 @@ class CarabaoController extends Controller
         ]);
         
         if($validator->fails()){
-            foreach($validator->messages()->all() as $message){
-                flash()->addError($message);
-            }
+            $message = $validator->messages()->all()[0];
+            flash()->addError($message);
             return back()->withInput();
+        }else{
+            $carabao_form = [
+                'name' => $request->name,
+                'breed' => $request->breed,
+                'weight' => $request->weight,
+                'user_id' => $request->owner,
+                'cooperative_id' => $request->cooperative
+            ];
+            Carabao::create($carabao_form);
+    
+            $notification = [
+                'cooperative_id' => $request->cooperative,
+                'title' => 'Carabao Successfully Registered',
+                'message' => 'Your '. $request->breed . 'has been Successfully Registered',
+            ];
+            Notification::create($notification);
+            
+            return redirect('/cooperative/'.$request->cooperative);
         }
-
-        $carabao_form = [
-            'name' => $request->name,
-            'breed' => $request->breed,
-            'weight' => $request->weight,
-            'user_id' => $request->owner,
-            'cooperative_id' => $request->cooperative
-        ];
-        Carabao::create($carabao_form);
-        return redirect('/cooperative_details');
     }
 }

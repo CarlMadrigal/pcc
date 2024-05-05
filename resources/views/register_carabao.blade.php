@@ -19,21 +19,20 @@
         <!-- User Profile -->
         <div class="user">
             <img class="profile-pic" src="{{ asset('images/profile.jpg') }}" alt="">
-            <h2 id="name">Dave Geroleo</h2>
+            <h2 id="name">{{auth()->user()->name}}</h2>
         </div>
 
         <!-- Controls -->
         <div class="controls">
             <a href="/"><span class="material-symbols-rounded">grid_view</span><p>Dashboard</p></a>
             <a href="/cooperative" class="active"><span class="material-symbols-rounded active-icon">handshake</span><p>Cooperative</p></a>
-            <a href="#"><span class="material-symbols-rounded">pie_chart</span><p>Analytics</p><p id="count">5</p></a>
-            <a href="/notification"><span class="material-symbols-rounded">notifications</span><p>Notifications</p><p id="count">50</p></a>
-            <a href="#"><span class="material-symbols-rounded">chat</span><p>Messages</p><p id="count">10</p></a>
+            <a href="#"><span class="material-symbols-rounded">pie_chart</span><p>Analytics</p></a>
+            <a href="/notification"><span class="material-symbols-rounded">notifications</span><p>Notifications</p></a>
             <a href="#"><span class="material-symbols-rounded">settings</span><p>Settings</p></a>
             <a href="/logout"><span class="material-symbols-rounded">logout</span><p>Log out</p></a>
         </div>
     </div>
-
+    
     <!-- Main Content -->
     <div class="container">
 
@@ -45,7 +44,7 @@
                     <input type="text" placeholder="Search">
                     <span class="material-symbols-rounded">search</span>
                 </div>
-                <!-- <a><p>Add Coop</p><span class="material-symbols-rounded">add</span></a> -->
+                <a href="/cooperative/{{request()->route('id')}}" id="backBtn"><span class="material-symbols-rounded">arrow_back</span></a>
             </div>
         </div>
 
@@ -59,9 +58,9 @@
                     <div class="basic-info-carabao">
                         <h3>Carabao's Info</h3>
 
-                        <input type="text" placeholder="Carabao's name" name="name" required>
+                        <input type="text" placeholder="Carabao's name" name="name" value="{{old ('name') }}" required>
                     <div class="breed-weight">
-                        <select id="breed" name="breed" required placeholder>
+                        <select id="breed" name="breed" value="{{old ('breed') }}" required placeholder>
                             <option disabled selected>Select breed</option>
                             <option value="Water Buffalo">Water Buffalo</option>
                             <option value="Murrah">Murrah</option>
@@ -69,25 +68,17 @@
                             <option value="Phippine Carabao">Phippine Carabao</option>
                         </select>
 
-                        <input type="text" placeholder="Weight" name="weight" required>
+                        <input type="text" placeholder="Weight" name="weight" value="{{old ('weight') }}" required>
                     </div>
                         
                         <select id="owner" name="owner" required>
                             <option disabled selected>Select owner</option>
-
-                            @foreach ($users as $users)
-                                <option value="{{$users->id}}">{{$users->name}}</option>
+                            @foreach ($users as $user)
+                                <option value="{{$user->id}}">{{$user->name}}</option>
                             @endforeach
                         </select>
 
                     </div>
-
-                    <!-- <div class="email-pass-user">
-                        <h3>Create Account</h3>
-                        <input type="text" placeholder="Username" required>
-                        <input type="password" placeholder="Password" required>
-                        <input type="password" placeholder="Confirm Password" required>
-                    </div> -->
                     <button type="submit">Submit</button>
                 </form>
                 <img src="{{ asset('images/carabao.png') }}" alt="" >
