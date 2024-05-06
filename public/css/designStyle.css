@@ -21,7 +21,7 @@
     --background-color: rgba(134, 144, 233, 0.15);
     --shadow: 0px 2px 10px -2px rgba(0, 4, 255, 0.070);
     --shadow2: 0px 10px 15px -3px rgba(0, 4, 255, 0.070);
-    --active-background: rgba(134, 144, 233, 0.10);
+    --active-background: rgba(134, 144, 233, 0.05);
     --active: rgb(0, 81, 255);
 
     --font-size: 1rem;
@@ -52,6 +52,7 @@ body{
     width: 100%;
     height: 100vh;
     background: var(--background-color);
+    overflow-x: hidden;
 }
 
 /* Navigational Bar */
@@ -198,7 +199,7 @@ body{
 /* Head */
 .head{
     display: flex;
-    padding: 0 15px;
+    padding: 15px 30px 0 30px;
     align-items: center;
     justify-content: space-between;
     width: 100%;
@@ -264,8 +265,9 @@ body{
 
 
 .head-control a:hover{
-    transform: scale(1.03);
+    transform: scale(1.05);
     cursor: pointer;
+    background-color: rgba(134, 144, 233, 0.2);
 }
 
 #date{
@@ -308,7 +310,7 @@ input[type="date"]:focus {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 445px;
+    max-width: 440px;
     height: 375px;
     background-color: white;
     border-radius: 15px;
@@ -321,6 +323,7 @@ input[type="date"]:focus {
 
 .content .coop-con:hover{
     scale: 1.02;
+    
 }
 
 .coop-con .color{
@@ -639,6 +642,7 @@ display: none;
     overflow-x: hidden;
     overflow-y: auto;
     gap: 10px;
+    padding: 30px;
     /* background-color: var(--active-background); */
 }
 
@@ -670,9 +674,10 @@ display: none;
     width: 100%;
     height: fit-content;
     gap: 20px;
-    background-color: var(--active-background);
+    background-color: rgba(134, 144, 233, 0.1);
     padding: 20px;
     border-radius: 20px;
+    transition: var(--transition);
 }
 
 .notification .notif .notif-details{
@@ -705,6 +710,14 @@ display: none;
     align-self: flex-start;
     cursor: pointer;
 }
+
+.notification .notif:hover{
+    transform: scale(1.02);
+    cursor: pointer;
+    background-color: rgba(134, 144, 233, 0.3);
+    box-shadow: var(--shadow2);
+}
+
 
 
 /* ----------------------- Add User And Carabao----------------------- */
@@ -743,12 +756,12 @@ display: none;
 }
 
 .content .add-user-form img{
-    width: 780px;
+    width: 700px;
     height: auto;
     mix-blend-mode: darken;
 }
 
-.add-user-form form :where(div input, select){
+.add-user-form form :where(div input, select, textarea){
     width: 100%;
     outline: none;
     border: var(--border);
@@ -772,8 +785,7 @@ display: none;
 .add-user-form form > div input:hover{
     border: 2px solid var(--secondary-color);
 }
-.add-user-form form > div input:focus, select:focus{
-    width: 100%;
+.add-user-form form > div input:focus, select:focus, textarea:focus{
     border: 2px solid var(--secondary-color);
     box-shadow: var(--shadow2)
 }
@@ -796,8 +808,127 @@ display: none;
     gap: 15px;
 }
 
+/*----------------------- Upload Materials ---------------------------*/
+.select-coop{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--active-background);
+    padding: 20px;
+    border-radius: 15px;
+}
 
-/* ----------------------- Analytics ----------------------- */
+.select-coop > div{
+    flex: 1 0 50px;
+    min-width: 150px;
+    height: fit-content;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    text-align: left;
+}
+
+
+.select-coop .options label{
+    font-size: 15px;
+}
+
+input[type="radio"]{
+    width: 17px;
+    height: 17px;
+}
+.pic{
+    width: 200px;
+}
+.coop-area{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+}
+.coop-area h3{
+    width: 100%;
+}
+
+
+input[type="radio"]:checked{
+    accent-color: var(--primary-color);
+}
+
+
+.clear-upload > button{
+    background-color: var(--base-color);
+    outline: none;
+    border: none;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    height: auto;
+    font-size: 15px;
+    border-radius: 10px;
+    transition: .3s ease;
+}
+.clear-upload > :nth-child(2){
+    background-color: var(--background-color);
+    color: var(--primary-color);
+}
+
+
+
+
+/*  ----------------------- Analytics ----------------------- */ 
+
+
+.coop-summary{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 30px 30px 0 30px;
+}
+.coop-body h1{
+    font-weight: 600;
+}
+
+.coop-summary > div{
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 200px;
+    max-height: 350px;
+    padding: 30px;
+    border-radius: 15px;
+    gap: 20px;
+    transition: 0.3s all ease;
+}
+
+.coop-summary div > img{
+    height: 60px;
+    width: fit-content;
+}
+
+.coop-summary div > h2{
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--active);
+}
+.coop-summary div p{
+    font-size: 20px;
+}
+.coop-summary div p > .highlight{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.coop-summary div h2 small{
+    font-size: 25px;
+    font-weight: 400;
+}
+
+
+
+
 .analytics{
     width: 100%;
     height: 100%;
@@ -809,14 +940,17 @@ display: none;
 }
 
 .analytics .insights{
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    padding: 0 30px;
     gap: 30px;
 }
 
 .analytics .insights > div{
     flex: 1 0 200px;
+    width: 100%;
     background-color: var(--active-background);
     padding: 20px;
     display: flex;
@@ -891,14 +1025,26 @@ display: none;
     justify-content: center;
     align-items: center;
 }
-
+.analytics .insights > div .middle .right{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: fit-content;
+    height: fit-content;
+    
+}
+.analytics .insights > div .middle .right h2{
+    line-height: 25px;
+}
 .analytics .insights > div .middle .right h3{
     font-weight: 400;
+    font-size: 12px;
 }
 
 
 .analytics .insights .healthy .middle .right :where(h3, h2, span){
     color: #55A55E;
+
 }
 .analytics .insights .unhealthy .middle .right :where(h3, h2, span){
     color: #D83B3B;
@@ -907,9 +1053,209 @@ display: none;
     color: #9B715D;
 }
 
-.analytics .insights > div:hover{
+.analytics .insights > div:hover, .coop-summary > div:hover{
     transform: scale(1.03);
     box-shadow: var(--shadow2);
 }
 
-/* Canvas */
+
+.registeredCoop{
+    display: flex;
+    gap: 30px;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 100%;
+}
+.registeredCoop > div{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    padding: 30px;
+}
+.registeredCoop > div .box{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.registeredCoop > div .box div{
+    background-color: var(--background-color);
+    display: flex;
+    align-items: center;
+    padding: 10px 20px 10px 10px;
+    border-radius: 50px;
+    transition: var(--transition);
+    justify-content: space-between;
+}
+.registeredCoop > div .box div h3{
+    font-weight: 600;
+}
+
+.registeredCoop > div .box div p{
+    font-weight: 500;
+    font-size: 20px;
+    color: var(--active);
+}
+.registeredCoop .car-gender .box{
+    height: 100%;
+    gap: 30px;
+}
+.registeredCoop .car-gender .box > div{
+    padding: 0 80px;
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+}
+
+.registeredCoop > div .box div:hover{
+    transform: scale(1.05);
+    box-shadow: var(--shadow2);
+}
+.registeredCoop div h2{
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.linegraph{
+    width: 100%;
+    height: 450px;
+    padding: 30px;
+}
+.bar-donut{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    height: 450px;
+    padding: 30px;
+}
+
+.bar-donut :where(.bar, .donut){
+    width: 50%;
+    height: 100%;
+}
+
+
+
+
+/* ----------------------- Aside -----------------------*/
+aside{
+    background: white;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+    border-radius: 20px;
+    justify-content: flex-start;
+    box-shadow: var(--shadow2);
+    
+}
+
+aside > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+aside > div .recUp-con {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    padding: 15px;
+    overflow-y: auto;
+}
+aside > div .recUp-con .recUp{
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    gap: 20px;
+    padding: 10px;
+}
+aside > div .recUp-con .recUp img{
+    width: 40px;
+}
+aside > div .recUp-con .recUp .recUp-details{
+    text-align: left;
+}
+aside > div h2{
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+}
+aside > div .recUp-con .recUp .recUp-details p{
+    font-size: 12px;
+    text-align: left;
+}
+aside > div .recUp-con .recUp .recUp-details p span{
+    font-size: 12px;
+    font-weight: 600;
+}
+aside > div .recUp-con .recUp .recUp-details small{
+    font-size: 10px;
+    text-align: left;
+}
+
+aside > div .recUp-con .top-performer{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    gap: 15px;
+    padding: 20px 10px;
+    justify-content: space-between;
+}
+
+aside > div .recUp-con .top-performer h1{
+    font-weight: 600;
+    font-size: 20px;
+}
+.coopDetails{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    height: fit-content;
+    justify-content: space-between;
+}
+.coopDetails p{
+    font-weight: 500;
+}
+aside > div .recUp-con .top-performer .performance{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+aside > div .recUp-con .top-performer .performance :where(h4, span){
+    line-height: 20px;
+    font-weight: 500;
+    color: var(--active);
+}
+
+
+
+::-webkit-scrollbar{
+    width: 7px;
+}
+
+::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: rgba(134, 144, 233, 0.25);;
+    border-radius: 50px;
+    cursor: -webkit-grabbing;
+    transition: var(--transition);
+}
+::-webkit-scrollbar-thumb:hover{
+    background-color: rgba(134, 144, 233, 1);
+}

@@ -26,7 +26,7 @@
         <div class="controls">
             <a href="/"><span class="material-symbols-rounded">grid_view</span><p>Dashboard</p></a>
             <a href="/cooperative" class="active"><span class="material-symbols-rounded active-icon">handshake</span><p>Cooperative</p></a>
-            <a href="#"><span class="material-symbols-rounded">pie_chart</span><p>Analytics</p></a>
+            <a href="/analytics"><span class="material-symbols-rounded">pie_chart</span><p>Analytics</p></a>
             <a href="/notification"><span class="material-symbols-rounded">notifications</span><p>Notifications</p></a>
             <a href="#"><span class="material-symbols-rounded">settings</span><p>Settings</p></a>
             <a href="/logout"><span class="material-symbols-rounded">logout</span><p>Log out</p></a>
@@ -50,7 +50,7 @@
 
         <!-- Content -->
         <div class="content">
-            
+        
             <div class="coop-full-details">
                 <div class="coop-head">
                     <div class="coop-prof">
@@ -63,13 +63,9 @@
                     </div>
                     
                     <div class="coop-adds">
-                        <label for="file-upload" class="custom-file-upload">
-                            <span class="material-symbols-rounded">upload</span><p>Materials</p>
-                        </label>
-                        <input id="file-upload" type="file" />
-                        
+                        <button><a href="/upload"><span class="material-symbols-rounded">upload</span><p>Materials</p></a></button>
                         <button><a href="/cooperative/{{$cooperative->id}}/register/carabao"><span class="material-symbols-rounded">add</span><p>Carabao</p></a></button>
-                        <button><a href="#"><span class="material-symbols-rounded">edit</span><p>Edit</p></a></button>
+                        <button><a href=""><span class="material-symbols-rounded">edit</span><p>Edit</p></a></button>
                     </div>
                 </div>
                 <div class="coop-body">

@@ -41,4 +41,8 @@ Route::get('/notification', [RedirectController::class, 'redirectToNotificationp
 Route::get('/delete/{id}', [NotificationController::class, 'delete']);
 
 Route::get('/deleteall', [NotificationController::class, 'deleteAll']);
+
+Route::get('/analytics', [RedirectController::class, 'redirectToAnalyticspage']);
+
+Route::get('/upload', [RedirectController::class, 'redirectToUploadMaterialspage']);
     

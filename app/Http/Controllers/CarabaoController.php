@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carabao;
-use App\Models\Cooperative;
 use App\Models\Notification;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -34,6 +32,7 @@ class CarabaoController extends Controller
             flash()->addError($message);
             return back()->withInput();
         }else{
+            
             $carabao_form = [
                 'name' => $request->name,
                 'breed' => $request->breed,
@@ -42,11 +41,11 @@ class CarabaoController extends Controller
                 'cooperative_id' => $request->cooperative
             ];
             Carabao::create($carabao_form);
-    
+
             $notification = [
                 'cooperative_id' => $request->cooperative,
                 'title' => 'Carabao Successfully Registered',
-                'message' => 'Your '. $request->breed . 'has been Successfully Registered',
+                'message' => 'Your '. $request->breed . ' has been Successfully Registered',
             ];
             Notification::create($notification);
             

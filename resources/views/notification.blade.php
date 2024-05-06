@@ -26,7 +26,7 @@
         <div class="controls">
             <a href="/"><span class="material-symbols-rounded">grid_view</span><p>Dashboard</p></a>
             <a href="/cooperative"><span class="material-symbols-rounded">handshake</span><p>Cooperative</p></a>
-            <a href="#"><span class="material-symbols-rounded">pie_chart</span><p>Analytics</p></a>
+            <a href="/analytics"><span class="material-symbols-rounded">pie_chart</span><p>Analytics</p></a>
             <a href="/notification" class="active"><span class="material-symbols-rounded active-icon">notifications</span><p>Notifications</p></a>
             <a href="#"><span class="material-symbols-rounded">settings</span><p>Settings</p></a>
             <a href="/logout"><span class="material-symbols-rounded">logout</span><p>Log out</p></a>

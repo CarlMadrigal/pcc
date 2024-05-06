@@ -23,25 +23,27 @@ class LoginController extends Controller
             $message = $validator->messages()->all()[0];
             flash()->addError($message);
             return back()->withInput();
-        }
-
-        $credentials = [
-            'username' => $request->get('username'),
-            'password' => $request->get('password')
-        ];
-
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user();
-            if ($user->role != 'admin') {
+        }else{
+            $credentials = [
+                'username' => $request->get('username'),
+                'password' => $request->get('password')
+            ];
+    
+            if (Auth::attempt($credentials)) {
+                $user = Auth::user();
+                if ($user->role == 'admin') {
+                    flash()->addInfo('Welcome back '.$user->name. '!');
+                    return redirect()->intended('/');
+                }
                 flash()->addError('Invalid credentials');
                 return back()->withInput();
             }
-            flash()->addInfo('Welcome back '.$user->name. '!');
-            return redirect()->intended('/');
+    
+            flash()->addError('Invalid credentials');
+            return back()->withInput();
         }
 
-        flash()->addError('Invalid credentials');
-        return back()->withInput();
+        
     }
 
     public function logout(Request $request){

@@ -28,7 +28,7 @@
             <a href="/cooperative" class="active"><span class="material-symbols-rounded active-icon">handshake</span><p>Cooperative</p></a>
             <a href="#"><span class="material-symbols-rounded">pie_chart</span><p>Analytics</p></a>
             <a href="/notification"><span class="material-symbols-rounded">notifications</span><p>Notifications</p></a>
-            <a href="#"><span class="material-symbols-rounded">settings</span><p>Settings</p></a>
+            <a href="/analytics"><span class="material-symbols-rounded">settings</span><p>Settings</p></a>
             <a href="/logout"><span class="material-symbols-rounded">logout</span><p>Log out</p></a>
         </div>
     </div>
@@ -62,15 +62,16 @@
                     <div class="breed-weight">
                         <select id="breed" name="breed" value="{{old ('breed') }}" required placeholder>
                             <option disabled selected>Select breed</option>
-                            <option value="Water Buffalo">Water Buffalo</option>
+                            <option value="Jafarabadi">Jafarabadi</option>
                             <option value="Murrah">Murrah</option>
-                            <option value="Nili Ravi">Nili Ravi</option>
+                            <option value="Nelore">Nelore</option>
+                            <option value="Pandharpuri">Pandharpuri</option>
                             <option value="Phippine Carabao">Phippine Carabao</option>
                         </select>
 
                         <input type="text" placeholder="Weight" name="weight" value="{{old ('weight') }}" required>
                     </div>
-                        
+                     
                         <select id="owner" name="owner" required>
                             <option disabled selected>Select owner</option>
                             @foreach ($users as $user)
