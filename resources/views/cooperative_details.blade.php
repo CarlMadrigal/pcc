@@ -58,12 +58,12 @@
                         <div class="coop-name-owner">
                             <h1 id="coop-name">{{$cooperative->name}}</h1>
                             <p>{{$cooperative->head->name}}</p>
-                            <small id="coop-id">#{{$cooperative->id}}</small>
+                            <small id="coop-id">#{{($cooperative->id)}}</small>
                         </div>
                     </div>
                     
                     <div class="coop-adds">
-                        <button><a href="/upload"><span class="material-symbols-rounded">upload</span><p>Materials</p></a></button>
+                        <button><a href="/upload/{{$cooperative->id}}"><span class="material-symbols-rounded">upload</span><p>Materials</p></a></button>
                         <button><a href="/cooperative/{{$cooperative->id}}/register/carabao"><span class="material-symbols-rounded">add</span><p>Carabao</p></a></button>
                         <button><a href=""><span class="material-symbols-rounded">edit</span><p>Edit</p></a></button>
                     </div>

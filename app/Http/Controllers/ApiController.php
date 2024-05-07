@@ -14,22 +14,42 @@ class ApiController extends Controller
 {
     public function getCooperatives(Request $request){
         $cooperatives = Cooperative::all();
-        $list = [];
-        foreach ($cooperatives as $cooperative){
-            $coop_id = $cooperative['id'];
-            $list[$coop_id] =  [
-                'id' => $coop_id,
-                'name' => $cooperative->name,
-                'address' => $cooperative->address,
-                'contact' => $cooperative->contact
-            ];
-        };
 
-        return response()->json([
-            "success" => true,
-            "message" => "Sent Successfully",
-            "cooperatives" => $list
-        ]);
+        $xml = new \SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><data></data>');
+        $xml->addChild('success', true);
+        $xml->addChild('message', 'Sent Successfully');
+
+        $cooperativesXml = $xml->addChild('cooperatives');
+        $counter = 1;
+        foreach ($cooperatives as $cooperative) {
+            $cooperativeXml = $cooperativesXml->addChild('cooperative');
+            $cooperativeXml->addAttribute('id', $counter++);
+            
+            $cooperativeXml->addChild('id', $cooperative->id);
+            $cooperativeXml->addChild('name', $cooperative->name);
+            $cooperativeXml->addChild('address', $cooperative->address);
+            $cooperativeXml->addChild('contact', $cooperative->contact);
+        }
+
+        $xmlString = $xml->asXML();
+        return response($xmlString)->header('Content-Type', 'text/xml');
+
+        // $list = [];
+        // foreach ($cooperatives as $cooperative){
+        //     $coop_id = $cooperative['id'];
+        //     $list[$coop_id] =  [
+        //         'id' => $coop_id,
+        //         'name' => $cooperative->name,
+        //         'address' => $cooperative->address,
+        //         'contact' => $cooperative->contact
+        //     ];
+        // };
+
+        // return response()->json([
+        //     "success" => true,
+        //     "message" => "Sent Successfully",
+        //     "cooperatives" => $list
+        // ]);
     }
 
     public function registerUser(Request $request){
@@ -62,30 +82,30 @@ class ApiController extends Controller
 
         }else{
             $token = Str::random(10);
-        $user_form = [
-            'name' => $request->name,
-            'cooperative_id' => $request->cooperative_id,
-            'email' => $request->email,
-            'username' => $request->username,
-            'password' => bcrypt($request->password),
-            'api_token' => $token,
-            'role' => 'user'
-        ];
-        User::create($user_form);
+            $user_form = [
+                'name' => $request->name,
+                'cooperative_id' => $request->cooperative_id,
+                'email' => $request->email,
+                'username' => $request->username,
+                'password' => bcrypt($request->password),
+                'api_token' => $token,
+                'role' => 'user'
+            ];
+            User::create($user_form);
 
-        $notification = [
-            'cooperative_id' => $request->cooperative_id,
-            'title' => 'New User Successfully Registered',
-            'message' => $request->name.'\'s Account has been Successfully Registered',
-        ];
-        Notification::create($notification);
+            $notification = [
+                'cooperative_id' => $request->cooperative_id,
+                'title' => 'New User Successfully Registered',
+                'message' => $request->name.'\'s Account has been Successfully Registered',
+            ];
+            Notification::create($notification);
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Successfully registered',
-            'token' => $token
-        ], 200);
-        }
+            return response()->json([
+                'success' => true,
+                'message' => 'Successfully registered',
+                'token' => $token
+            ], 200);
+            }
 
         
     }
@@ -105,32 +125,32 @@ class ApiController extends Controller
                 'success' => false,
                 'message' => $message
             ], 400);
-        }
-
-        $credentials = [
-            'username' => $request->get('username'),
-            'password' => $request->get('password')
-        ];
-
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user();
-            if ($user->role != 'user') {
+        }else{
+            $credentials = [
+                'username' => $request->get('username'),
+                'password' => $request->get('password')
+            ];
+    
+            if (Auth::attempt($credentials)) {
+                $user = Auth::user();
+                if ($user->role == 'user') {
+                    return response()->json([
+                        'success' => true,
+                        'message' => 'Successfully logged in',
+                        'token' => $user->api_token
+                    ], 200);
+                }
                 return response()->json([
                     'success' => false,
                     'message' => 'Invalid credentials'
                 ], 400);
             }
+    
             return response()->json([
-                'success' => true,
-                'message' => 'Successfully logged in',
-                'token' => $user->api_token
-            ], 200);
+                'success' => false,
+                'message' => 'Invalid credentials'
+            ], 400);
         }
-
-        return response()->json([
-            'success' => false,
-            'message' => 'Invalid credentials'
-        ], 400);
     }
 
     public function getUserCarabaos(Request $request){
@@ -147,29 +167,29 @@ class ApiController extends Controller
                 'success' => false,
                 'message' => $message
             ], 400);
-        }
+        }else{
+            $user = User::where('api_token', $request->api_token)->first();
+            if (!$user || $user->role != 'user') {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'API token does not exists'
+                ], 400);
+            }
 
-        $user = User::where('api_token', $request->api_token)->first();
-        if (!$user || $user->role != 'user') {
+            $carabaos = [];
+            foreach($user->carabaos as $carabao){
+                $carabaos[$carabao->id] = [
+                    'name' => $carabao->name,
+                    'breed' => $carabao->breed,
+                    'weight' => $carabao->weight
+                ];
+            }
+
             return response()->json([
-                'success' => false,
-                'message' => 'API token does not exists'
-            ], 400);
-        }
-
-        $carabaos = [];
-        foreach($user->carabaos as $carabao){
-            $carabaos[$carabao->id] = [
-                'name' => $carabao->name,
-                'breed' => $carabao->breed,
-                'weight' => $carabao->weight
-            ];
-        }
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Successfully fetched',
-            'carabaos' => $carabaos
-        ], 200);
+                'success' => true,
+                'message' => 'Successfully fetched',
+                'carabaos' => $carabaos
+            ], 200);
+        } 
     }
 }

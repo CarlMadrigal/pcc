@@ -14,15 +14,19 @@ class RedirectController extends Controller
     function redirectToHomepage(Request $request) {
         if(Auth::check()){
             $carabao = Carabao::all();
+            $coop = User::where('role', 'coop_head')->get();
             $user = User::where('role', 'user')->get();
+            $notif = Notification::orderBy('created_at', 'desc')->get();
             return view('dashboard',[
                 'carabaos' => $carabao,
-                'users' => $user
+                'users' => $user,
+                'coops' => $coop,
+                'notifs' => $notif
             ]);
         }       
         return view('login');
     }
-
+    
     function redirectToCooperativePage(Request $request) {
         $cooperatives = Cooperative::all();
         return view('cooperative', [

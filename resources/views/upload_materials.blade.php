@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/designStyle.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}">
     <title>Cooperative - PCC</title>
+
 </head>
 <body>
     <!-- Navigational Bar -->
@@ -45,41 +46,23 @@
                     <input type="text" placeholder="Search">
                     <span class="material-symbols-rounded">search</span>
                 </div>
-                <a id="backBtn"><span class="material-symbols-rounded">arrow_back</span></a>
-                <!-- <a><p>Add Coop</p><span class="material-symbols-rounded">add</span></a> -->
+                <a href="/cooperative/{{request()->route('id')}}" id="backBtn"><span class="material-symbols-rounded">arrow_back</span></a>
             </div>
         </div>
 
         <!-- Content -->
         <div class="content">
             <div class="add-user-form">
-                <form action="">
-                    <!-- <h1>Upload Materials</h1> -->
+                <form action="/upload/process" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="text" style="display:none" name="cooperative" value="{{request()->route('id')}}">
                     <div class="basic-info-user">
                         <h3>File Info</h3>
-                        <select id="breed" name="breed" required placeholder>
-                            <option disabled selected>File type</option>
-                            <option value="Philippine">File (PDF, dox, ppt)</option>
-                            <option value="Murrah">Links (web-links, youtube links)</option>
-                            <option value="Nelore">Video</option>
-                            <option value="Jafarabadi">E-books</option>
-                        </select>
-                        <input type="file">
-                        <input type="url" name="" id="" placeholder="Links">
-                        <input type="text" placeholder="File Name" required>
-                        <div class="coop-area">
-                            <h3>Upload to:</h3>
-                            <div class="select-coop">
-                                <div class="options"><input type="radio" name="boac" id="boac"><label for="boac">Boac</label></div>
-                                <div class="options"><input type="radio" name="gasan" id="gasan"><label for="gasan">Gasan</label></div>
-                                <div class="options"><input type="radio" name="torrijos" id="torrijos"><label for="torrijos">Torrijos</label></div>
-                                <div class="options"><input type="radio" name="mogpog" id="mogpog"><label for="mogpog">Mogpog</label></div>
-                                <div class="options"><input type="radio" name="sta.cruz" id="sta.cruz"><label for="sta.cruz">Sta.cruz</label></div>
-                                <div class="options"><input type="radio" name="buenavista" id="buenavista"><label for="buenavista">Buenavista</label></div>
-                            </div>
-                        </div>
-                        
-                        <textarea name="" id="" rows="3" cols="50" placeholder="Description"></textarea> 
+                        <input type="file" name="file" id="file">
+                        <h4 style="text-align: center;">or</h4>
+                        <input type="url" name="link" id="link" placeholder="Links">
+                        <input type="text" placeholder="File Name" name="name" id="name" value="{{old('name')}}" required>           
+                        <textarea name="description" id="description" rows="3" cols="50" placeholder="Description">{{ old('description') }}</textarea> 
                     </div>
                     <div class="clear-upload">
                         <button type="submit">Upload</button>
@@ -93,6 +76,21 @@
         </div>
     </div>
 
+    <script>
+        function handleFileInput(){
+            document.getElementById("link").readOnly=true;
+        }
+        document.getElementById("file").addEventListener("change", handleFileInput, true);
 
+        function handleLinkInput(){
+            if(document.getElementById("link").value != ''){
+                document.getElementById("file").disabled=true;
+            }else{
+                document.getElementById("file").disabled=false;
+            }
+        }
+        document.getElementById("link").addEventListener("keyup", handleLinkInput);
+    </script>
 </body>
 </html>
+

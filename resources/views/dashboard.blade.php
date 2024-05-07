@@ -71,10 +71,10 @@
                 </div>
     
                 <div class="total-milk">
-                    <img src="{{ asset('images/milk.png') }}" alt="">
+                    <img src="{{ asset('images/default_coop_profile.png') }}" alt="">
                     <div>
-                        <p>Overall Produced<br><span class="highlight">MILK</span></p>
-                        <h2>20754 <small>liters</small></h2> 
+                        <p>Overall Registered<br><span class="highlight">COOPERATIVES</span></p>
+                        <h2>{{count($coops)}}</h2> 
                     </div>
 
                 </div>
@@ -141,12 +141,9 @@
                 <div class="co-op">
                     <h2>Registered Coops</h2>
                     <div class="box">
-                        <div class="coops"><img src="{{ asset('images/Coop profile/boac.png') }}" width="50px"><h3 value="Philippine">Boac Coop.</h3><p>30%</p></div>
-                        <div class="coops"><img src="{{ asset('images/Coop profile/gasan.png') }}" width="50px"><h3 value="Murrah">Gasan Coop.</h3><p>10%</p></div>
-                        <div class="coops"><img src="{{ asset('images/Coop profile/buenavista.png') }}" width="50px"><h3 value="Nelore">Buenavista Coop.</h3><p>15%</p></div>
-                        <div class="coops"><img src="{{ asset('images/Coop profile/mogpog.png') }}" width="50px"><h3 value="Jafarabadi">Mogpog Coop.</h3><p>15%</p></div>
-                        <div class="coops"><img src="{{ asset('images/Coop profile/sta.cruz.png') }}" width="50px"><h3 value="Pandharpuri">Sta. Cruz Coop</h3><p>20%</p></div>
-                        <div class="coops"><img src="{{ asset('images/Coop profile/torrijos.png') }}" width="50px"><h3 value="Pandharpuri">Torijjos Coop.</h3><p>10%</p></div>
+                        @foreach ($coops as $coop)
+                            <div class="coops"><img src="{{ asset('images/Coop profile/boac.png') }}" width="50px"><h3 value="Philippine">{{$coop->name}}</h3><p>0%</p></div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="car-gender">
@@ -163,53 +160,15 @@
         <div class="recent-updates">
             <h2>Recent Updates</h2>
             <div class="recUp-con">
-                <div class="recUp">
-                    <img src="{{ asset('images/Coop profile/boac.png') }}" alt="" width="110px">
-                    <div class="recUp-details">
-                        <p><span id="up-name">Boac Coop. </span> Lorem ipsum dolor sit amet.</p>
-                        <small id="time">1 hour ago</small>
+                @foreach ($notifs as $notif)
+                    <div class="recUp">
+                        <img src="{{ asset('images/Coop profile/buenavista.png') }}" alt="" width="110px">
+                        <div class="recUp-details">
+                            <p><span id="up-name">{{$notif->title}}</span> {{$notif->message}}</p>
+                            <small id="time">{{ $notif->created_at->format('Y-m-d') }}</small>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="recUp">
-                    <img src="{{ asset('images/Coop profile/buenavista.png') }}" alt="" width="110px">
-                    <div class="recUp-details">
-                        <p><span id="up-name">Buenavista Coop. </span> Lorem ipsum dolor sit amet.</p>
-                        <small id="time">1 hour ago</small>
-                    </div>
-                </div>
-
-                <div class="recUp">
-                    <img src="{{ asset('images/Coop profile/gasan.png') }}" alt="" width="110px">
-                    <div class="recUp-details">
-                        <p><span id="up-name">Gasan Coop. </span> Lorem ipsum dolor sit amet.</p>
-                        <small id="time">1 hour ago</small>
-                    </div>
-                </div>
-
-                <div class="recUp">
-                    <img src="{{ asset('images/Coop profile/mogpog.png') }}" alt="" width="110px">
-                    <div class="recUp-details">
-                        <p><span id="up-name">Mogpog Coop. </span> Lorem ipsum dolor sit amet.</p>
-                        <small id="time">1 hour ago</small>
-                    </div>
-                </div>
-
-                <div class="recUp">
-                    <img src="{{ asset('images/Coop profile/sta.cruz.png') }}" alt="" width="110px">
-                    <div class="recUp-details">
-                        <p><span id="up-name">Sta. Cruz Coop. </span> Lorem ipsum dolor sit amet.</p>
-                        <small id="time">1 hour ago</small>
-                    </div>
-                </div>
-
-                <div class="recUp">
-                    <img src="{{ asset('images/Coop profile/torrijos.png') }}" alt="" width="110px">
-                    <div class="recUp-details">
-                        <p><span id="up-name">Torrijos Coop. </span> Lorem ipsum dolor sit amet.</p>
-                        <small id="time">1 hour ago</small>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
 

@@ -26,7 +26,11 @@ class Cooperative extends Model
     public function carabaos() {
         return $this->hasMany(Carabao::class);
     }
-    
+
+    public function uploads() {
+        return $this->hasMany(Upload::class);
+    }
+
     public function notifications() {
         return $this->hasMany(Notification::class);
     }
