@@ -47,7 +47,7 @@
                 <a href="/cooperative" id="backBtn"><span class="material-symbols-rounded">arrow_back</span></a>
             </div>
         </div>
-
+        
         <!-- Content -->
         <div class="content">
         
@@ -63,7 +63,6 @@
                     </div>
                     
                     <div class="coop-adds">
-                        <button><a href="/upload/{{$cooperative->id}}"><span class="material-symbols-rounded">upload</span><p>Materials</p></a></button>
                         <button><a href="/cooperative/{{$cooperative->id}}/register/carabao"><span class="material-symbols-rounded">add</span><p>Carabao</p></a></button>
                         <button><a href=""><span class="material-symbols-rounded">edit</span><p>Edit</p></a></button>
                     </div>

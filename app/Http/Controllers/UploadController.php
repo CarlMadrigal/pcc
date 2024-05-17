@@ -13,14 +13,11 @@ class UploadController extends Controller
             'file' => 'file|mimes:pdf,docx,mp4|max:102400',
             'name' => 'required',
             'description' => 'required',
-            'cooperative' => 'required|exists:cooperatives,id'
         ], [
             'file.mimes' => 'File must be a PDF, DOCX, or MP4',
             'file.max' => 'File size must not exceed 100 MB',
             'name.required' => 'Name is required',
             'description.required' => 'Description is required',
-            'cooperative.required' => 'Cooperative is required',
-            'cooperative.exists' => 'Cooperative does not exists'
         ]);
         if($validator->fails()){
             $message = $validator->messages()->all()[0];
@@ -30,7 +27,8 @@ class UploadController extends Controller
             
             $filepath = null;
             $link = null;
-            if($request->file){
+            
+            if($request->file('file')){
                 $filepath = $request->file('file')->store('public');
             }
             if($request->link){
@@ -40,21 +38,20 @@ class UploadController extends Controller
             $file_form = [
                 'name' => $request->name,
                 'description' => $request->description,
-                'cooperative_id' => $request->cooperative,
+                'cooperative_id' => null,
                 'link' => $link,
                 'file_path' => $filepath
             ];
             Upload::create($file_form);
 
             $notification = [
-                'cooperative_id' => $request->cooperative,
                 'title' => 'File/Link Successfully Uploaded',
                 'message' => $request->name . ' has been Successfully Uploaded',
             ];
             Notification::create($notification);
 
             flash()->addSuccess('File/Link Successfully Upload');
-            return redirect('/upload/'.$request->cooperative);
+            return redirect('/cooperative');
         }
     }
 }

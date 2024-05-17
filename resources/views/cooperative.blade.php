@@ -44,10 +44,11 @@
                     <input type="text" placeholder="Search">
                     <span class="material-symbols-rounded">search</span>
                 </div>
+                <a href="/upload/cooperative"><span class="material-symbols-rounded">upload</span><p>Add Materials</p></a>
                 <a href="/register/cooperative"><p>Add Coop</p><span class="material-symbols-rounded">add</span></a>
             </div>
         </div>
-
+        
         <!-- Content -->
         <div class="content">
             @foreach ($cooperatives as $cooperative)

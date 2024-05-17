@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('link')->nullable();
             $table->string('file_path')->nullable();
-            $table->foreignId('cooperative_id')->constrained()->onDelete('cascade');
+            $table->foreignId('cooperative_id')->nullable();
             $table->timestamps();
         });
     }

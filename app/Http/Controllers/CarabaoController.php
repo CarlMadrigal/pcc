@@ -36,6 +36,7 @@ class CarabaoController extends Controller
             $carabao_form = [
                 'name' => $request->name,
                 'breed' => $request->breed,
+                'status' => 'Healthy',
                 'weight' => $request->weight,
                 'user_id' => $request->owner,
                 'cooperative_id' => $request->cooperative
@@ -44,6 +45,7 @@ class CarabaoController extends Controller
 
             $notification = [
                 'cooperative_id' => $request->cooperative,
+                'user_id' => $request->owner,
                 'title' => 'Carabao Successfully Registered',
                 'message' => 'Your '. $request->breed . ' has been Successfully Registered',
             ];

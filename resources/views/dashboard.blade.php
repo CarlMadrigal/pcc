@@ -16,7 +16,7 @@
         <a href="/">
             <img src="{{ asset('images/combination logo.png') }}" class="logo">
         </a>
-
+        
         <!-- User Profile -->
         <div class="user">
             <img class="profile-pic" src="{{ asset('images/profile.jpg') }}" alt="">

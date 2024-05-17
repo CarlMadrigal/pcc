@@ -45,6 +45,6 @@ Route::get('/deleteall', [NotificationController::class, 'deleteAll']);
 
 Route::get('/analytics', [RedirectController::class, 'redirectToAnalyticspage']);
 
-Route::get('/upload/{id}', [RedirectController::class, 'redirectToUploadMaterialspage']);
+Route::get('/upload/cooperative', [RedirectController::class, 'redirectToUploadMaterialspage']);
 
 Route::post('/upload/process', [UploadController::class, 'upload']); 

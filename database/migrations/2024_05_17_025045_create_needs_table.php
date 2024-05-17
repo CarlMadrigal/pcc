@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('carabaos', function (Blueprint $table) {
+        Schema::create('needs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('cooperative_id')->constrained()->onDelete('cascade');
-            $table->string('name');
-            $table->string('breed');
-            $table->string('status');
-            $table->string('weight');
+            $table->foreignId('carabao_id')->nullable()->constrained()->onDelete('cascade');
+            $table->integer('feed')->nullable();
+            $table->integer('water')->nullable();
+            $table->integer('milk')->nullable();
+            $table->integer('vitamin')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('carabaos');
+        Schema::dropIfExists('needs');
     }
 };

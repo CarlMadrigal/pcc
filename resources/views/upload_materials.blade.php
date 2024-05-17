@@ -46,7 +46,7 @@
                     <input type="text" placeholder="Search">
                     <span class="material-symbols-rounded">search</span>
                 </div>
-                <a href="/cooperative/{{request()->route('id')}}" id="backBtn"><span class="material-symbols-rounded">arrow_back</span></a>
+                <a href="/cooperative" id="backBtn"><span class="material-symbols-rounded">arrow_back</span></a>
             </div>
         </div>
 
@@ -55,7 +55,6 @@
             <div class="add-user-form">
                 <form action="/upload/process" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <input type="text" style="display:none" name="cooperative" value="{{request()->route('id')}}">
                     <div class="basic-info-user">
                         <h3>File Info</h3>
                         <input type="file" name="file" id="file">

@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Carabao extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'user_id',
+        'status',
         'name',
         'breed',
         'weight',
@@ -23,5 +23,9 @@ class Carabao extends Model
 
     public function cooperative() {
         return $this->belongsTo(Cooperative::class, 'cooperative_id', 'id');
+    }
+
+    public function needs() {
+        return $this->hasMany(Need::class);
     }
 }
