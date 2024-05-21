@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Need;
 use App\Models\Carabao;
 use App\Models\Notification;
 use Illuminate\Http\Request;
@@ -41,7 +42,7 @@ class CarabaoController extends Controller
                 'user_id' => $request->owner,
                 'cooperative_id' => $request->cooperative
             ];
-            Carabao::create($carabao_form);
+            $carabao = Carabao::create($carabao_form);
 
             $notification = [
                 'cooperative_id' => $request->cooperative,
@@ -50,6 +51,16 @@ class CarabaoController extends Controller
                 'message' => 'Your '. $request->breed . ' has been Successfully Registered',
             ];
             Notification::create($notification);
+
+            $need = [
+                'cooperative_id' => $request->cooperative,
+                'carabao_id' => $carabao->id,
+                'feed' => 0,
+                'water' => 0,
+                'milk' => 0,
+                'vitamin' => 0
+            ];
+            Need::create($need);
             
             flash()->addSuccess('Carabao Successfully Registered');
             return redirect('/cooperative/'.$request->cooperative);

@@ -53,7 +53,7 @@
         <div class="analytics">
             <div class="coop-summary">
                 <div class="total-carabaos">
-                    <img src="../images/cow.png" alt="" >
+                    <img src="{{ asset('images/cow.png') }}" alt="" >
                     <div>
                         <p>Overall Registered<br><span class="highlight">CARABAOS</span></p>
                         <h2>{{count($carabaos)}}</h2>
@@ -61,7 +61,7 @@
                 </div>
     
                 <div class="total-users">
-                    <img src="../images/user.png" alt="" >
+                    <img src="{{ asset('images/user.png') }}" alt="" >
                     <div>
                         <p>Overall Registered<br><span class="highlight">USERS</span></p>
                         <h2>{{count($users)}}</h2>
@@ -69,12 +69,11 @@
                 </div>
     
                 <div class="total-milk">
-                    <img src="../images/milk.png" alt="">
+                    <img src="{{ asset('images/default_coop_profile.png') }}" alt="">
                     <div>
-                        <p>Overall Produced<br><span class="highlight">MILK</span></p>
-                        <h2>20754 <small>liters</small></h2> 
+                        <p>Overall Registered<br><span class="highlight">COOPERATIVES</span></p>
+                        <h2>{{count($coops)}}</h2> 
                     </div>
-
                 </div>
             </div>
             
@@ -92,7 +91,7 @@
                         </div>
                         <div class="right">
                             <h3>Overall<br>Healthy</h3>
-                            <h2><span id="count-carabao">5360</span> Carabaos</h2>
+                            <h2><span id="count-carabao">{{count($healthy)}}</span> Carabaos</h2>
                         </div>
                     </div>
                     <small class="text-muted">Last 24 hours</small>
@@ -110,7 +109,7 @@
                         </div>
                         <div class="right">
                             <h3>Overall<br>Unhealthy</h3>
-                            <h2><span id="count-carabao">600</span> Carabaos</h2>
+                            <h2><span id="count-carabao">{{count($unhealthy)}}</span> Carabaos</h2>
                         </div>
                     </div>
                     <small class="text-muted">Last 24 hours</small>
@@ -128,7 +127,7 @@
                         </div>
                         <div class="right">
                             <h3>Overall<br>Under Observation</h3>
-                            <h2><span id="count-carabao">1200</span> Carabaos</h2>
+                            <h2><span id="count-carabao">{{count($pregnant)}}</span> Carabaos</h2>
                         </div>
                     </div>
                     <small class="text-muted">Last 24 hours</small>

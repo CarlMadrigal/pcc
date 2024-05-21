@@ -76,7 +76,6 @@
                         <p>Overall Registered<br><span class="highlight">COOPERATIVES</span></p>
                         <h2>{{count($coops)}}</h2> 
                     </div>
-
                 </div>
             </div>
             
@@ -94,7 +93,7 @@
                         </div>
                         <div class="right">
                             <h3>Overall<br>Healthy</h3>
-                            <h2><span id="count-carabao">5360</span> Carabaos</h2>
+                            <h2><span id="count-carabao">{{count($healthy)}}</span> Carabaos</h2>
                         </div>
                     </div>
                     <small class="text-muted">Last 24 hours</small>
@@ -112,7 +111,7 @@
                         </div>
                         <div class="right">
                             <h3>Overall<br>Unhealthy</h3>
-                            <h2><span id="count-carabao">600</span> Carabaos</h2>
+                            <h2><span id="count-carabao">{{count($unhealthy)}}</span> Carabaos</h2>
                         </div>
                     </div>
                     <small class="text-muted">Last 24 hours</small>
@@ -130,7 +129,7 @@
                         </div>
                         <div class="right">
                             <h3>Overall<br>Under Observation</h3>
-                            <h2><span id="count-carabao">1200</span> Carabaos</h2>
+                            <h2><span id="count-carabao">{{count($pregnant)}}</span> Carabaos</h2>
                         </div>
                     </div>
                     <small class="text-muted">Last 24 hours</small>
@@ -142,7 +141,7 @@
                     <h2>Registered Coops</h2>
                     <div class="box">
                         @foreach ($coops as $coop)
-                            <div class="coops"><img src="{{ asset('images/Coop profile/boac.png') }}" width="50px"><h3 value="Philippine">{{$coop->name}}</h3><p>0%</p></div>
+                            <div class="coops"><img src="{{ asset('images/Coop profile/boac.png') }}" width="50px"><h3 value="Philippine">{{$coop->cooperative->name}}</h3><p>0%</p></div>
                         @endforeach
                     </div>
                 </div>

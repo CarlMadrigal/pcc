@@ -90,7 +90,7 @@
                         <div class="total-milk">
                             <img src="{{ asset('images/milk.png') }}" alt="" width="">
                             <p>Total Produced<br><span class="highlight">MILK</span></p>
-                            <h2>2232 <small>liter</small></h2> 
+                            <h2>{{$milks}} <small>liter</small></h2> 
                         </div>
                     </div>
                 </div>

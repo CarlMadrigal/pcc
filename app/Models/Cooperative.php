@@ -34,4 +34,8 @@ class Cooperative extends Model
     public function notifications() {
         return $this->hasMany(Notification::class);
     }
+    
+    public function needs() {
+        return $this->hasMany(Need::class);
+    }
 }
